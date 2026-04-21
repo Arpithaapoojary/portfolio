@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Arpitha A P | Full Stack Developer</title>
+  <title>Arpitha | Full Stack Developer</title>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
@@ -62,7 +62,10 @@
     .nav-logo {
       font-family: 'Playfair Display', serif;
       font-size: 1.3rem;
-      color: var(--text);
+      background: linear-gradient(135deg, var(--accent2), var(--teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
       letter-spacing: 0.02em;
     }
 
@@ -117,7 +120,9 @@
     .hero-content { max-width: 750px; z-index: 1; }
 
     .hero-tag {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
       font-family: 'DM Mono', monospace;
       font-size: 0.78rem;
       color: var(--teal);
@@ -126,18 +131,124 @@
       padding: 0.3rem 1rem;
       margin-bottom: 1.5rem;
       letter-spacing: 0.08em;
+      background: rgba(45,212,191,0.06);
     }
+
+    .pulse-dot {
+      width: 8px; height: 8px;
+      background: var(--teal);
+      border-radius: 50%;
+      display: inline-block;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); box-shadow: 0 0 0 0 rgba(45,212,191,0.4); }
+      50% { opacity: 0.8; transform: scale(1.1); box-shadow: 0 0 0 6px rgba(45,212,191,0); }
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 2px;
+      height: 1em;
+      background: var(--accent2);
+      margin-left: 4px;
+      vertical-align: text-bottom;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    /* Floating particles */
+    .particles {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .particle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: float linear infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+      10% { opacity: 0.15; }
+      90% { opacity: 0.15; }
+      100% { transform: translateY(-100px) rotate(720deg); opacity: 0; }
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      font-family: 'DM Mono', monospace;
+      font-size: 0.7rem;
+      letter-spacing: 0.1em;
+      animation: fadeInUp 1s 0.8s both;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--muted), transparent);
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollLine {
+      0%, 100% { transform: scaleY(1); opacity: 1; }
+      50% { transform: scaleY(0.5); opacity: 0.4; }
+    }
+
+    /* Highlight gradient text */
+    .gradient-text {
+      background: linear-gradient(135deg, var(--accent2) 0%, var(--teal) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* Social links in hero */
+    .hero-socials {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      color: var(--muted);
+      text-decoration: none;
+      font-family: 'DM Mono', monospace;
+      font-size: 0.78rem;
+      transition: color 0.2s;
+    }
+
+    .social-link:hover { color: var(--accent2); }
 
     .hero-name {
       font-family: 'Playfair Display', serif;
-      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-size: clamp(4.5rem, 12vw, 8rem);
       font-weight: 700;
-      line-height: 1.05;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
+      line-height: 1.0;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.03em;
     }
-
-    .hero-name .accent { color: var(--accent2); }
 
     .hero-title {
       font-family: 'DM Mono', monospace;
@@ -626,7 +737,7 @@
 
   <!-- NAV -->
   <nav>
-    <div class="nav-logo">Arpitha<span>.</span></div>
+    <div class="nav-logo">Arpitha</div>
     <ul>
       <li><a href="#about">About</a></li>
       <li><a href="#skills">Skills</a></li>
@@ -641,18 +752,42 @@
   <section id="hero">
     <div class="hero-glow"></div>
     <div class="hero-glow2"></div>
+    <div class="particles" id="particles"></div>
     <div class="hero-content">
-      <div class="hero-tag">✦ Available for Opportunities</div>
-      <h1 class="hero-name">Arpitha<br><span class="accent">A P</span></h1>
-      <p class="hero-title">Full Stack Developer &nbsp;/&nbsp; MERN Stack</p>
+      <div class="hero-tag">
+        <span class="pulse-dot"></span>
+        Open to Opportunities
+      </div>
+      <h1 class="hero-name"><span class="gradient-text">Arpitha</span></h1>
+      <p class="hero-title">
+        <span id="typed-text">Full Stack Developer</span><span class="typing-cursor"></span>
+      </p>
       <p class="hero-desc">
         A passionate developer with a strong foundation in web technologies and programming. 
-        I build clean, functional, and meaningful digital experiences.
+        I build clean, functional, and meaningful digital experiences — from MERN apps to security tools.
       </p>
       <div class="hero-btns">
         <a href="#projects" class="btn-primary">View My Work</a>
         <a href="#contact" class="btn-outline">Get In Touch</a>
       </div>
+      <div class="hero-socials">
+        <a href="https://github.com/Arpithaapoojary" target="_blank" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="mailto:arpithaapoojary@gmail.com" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          Email
+        </a>
+        <a href="tel:+916361944619" class="social-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.1 19.79 19.79 0 0 1 1.07 2.47 2 2 0 0 1 3.05.5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.06a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 15z"/></svg>
+          +91 6361944619
+        </a>
+      </div>
+    </div>
+    <div class="scroll-indicator">
+      <span>scroll</span>
+      <div class="scroll-line"></div>
     </div>
   </section>
 
@@ -701,7 +836,6 @@
     <div class="section-line"></div>
     <div class="skills-grid">
       <div class="skill-card">
-        <span class="skill-icon">⌨️</span>
         <div class="skill-category">Languages</div>
         <div class="skill-tags">
           <span class="tag">Java</span>
@@ -711,7 +845,6 @@
         </div>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">🎨</span>
         <div class="skill-category">Frontend</div>
         <div class="skill-tags">
           <span class="tag">HTML</span>
@@ -720,7 +853,6 @@
         </div>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">⚙️</span>
         <div class="skill-category">Backend</div>
         <div class="skill-tags">
           <span class="tag">Node.js</span>
@@ -728,7 +860,6 @@
         </div>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">🗄️</span>
         <div class="skill-category">Database</div>
         <div class="skill-tags">
           <span class="tag teal">MongoDB</span>
@@ -736,7 +867,6 @@
         </div>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">🔧</span>
         <div class="skill-category">Tools & Platforms</div>
         <div class="skill-tags">
           <span class="tag">Git</span>
@@ -746,7 +876,6 @@
         </div>
       </div>
       <div class="skill-card">
-        <span class="skill-icon">🚀</span>
         <div class="skill-category">Specialization</div>
         <div class="skill-tags">
           <span class="tag">MERN Stack</span>
@@ -930,25 +1059,84 @@
       </p>
       <div class="contact-links">
         <a href="mailto:arpithaapoojary@gmail.com" class="contact-link">
-          ✉ arpithaapoojary@gmail.com
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+          arpithaapoojary@gmail.com
         </a>
         <a href="tel:+916361944619" class="contact-link">
-          📞 +91 6361944619
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.15 11.1 19.79 19.79 0 0 1 1.07 2.47 2 2 0 0 1 3.05.5h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L7.09 8.06a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 15z"/></svg>
+          +91 6361944619
         </a>
         <a href="https://github.com/Arpithaapoojary" target="_blank" class="contact-link">
-          ⌥ GitHub Profile
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+          GitHub Profile
         </a>
       </div>
       <a href="mailto:arpithaapoojary@gmail.com" class="btn-primary" style="display:inline-block;">
-        Say Hello →
+        Say Hello
       </a>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>Designed & Built by Arpitha A P &nbsp;·&nbsp; 2025</p>
+    <p>Designed & Built by Arpitha &nbsp;·&nbsp; 2025</p>
   </footer>
+
+  <script>
+    // Typing animation
+    const roles = ['Full Stack Developer', 'MERN Stack Developer', 'React.js Developer', 'Problem Solver'];
+    let roleIndex = 0, charIndex = 0, deleting = false;
+    const typedEl = document.getElementById('typed-text');
+
+    function type() {
+      const current = roles[roleIndex];
+      if (!deleting) {
+        typedEl.textContent = current.slice(0, charIndex + 1);
+        charIndex++;
+        if (charIndex === current.length) { deleting = true; setTimeout(type, 1800); return; }
+      } else {
+        typedEl.textContent = current.slice(0, charIndex - 1);
+        charIndex--;
+        if (charIndex === 0) { deleting = false; roleIndex = (roleIndex + 1) % roles.length; }
+      }
+      setTimeout(type, deleting ? 60 : 100);
+    }
+    type();
+
+    // Floating particles
+    const container = document.getElementById('particles');
+    const colors = ['#7c6ef5', '#2dd4bf', '#a78bfa', '#f59e0b'];
+    for (let i = 0; i < 18; i++) {
+      const p = document.createElement('div');
+      p.className = 'particle';
+      const size = Math.random() * 6 + 2;
+      p.style.cssText = `
+        width:${size}px; height:${size}px;
+        left:${Math.random()*100}%;
+        background:${colors[Math.floor(Math.random()*colors.length)]};
+        animation-duration:${Math.random()*15+10}s;
+        animation-delay:${Math.random()*10}s;
+      `;
+      container.appendChild(p);
+    }
+
+    // Scroll reveal
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0)';
+        }
+      });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.skill-card, .project-card, .edu-card, .timeline-item, .course-item, .stat-card').forEach(el => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(30px)';
+      el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+      observer.observe(el);
+    });
+  </script>
 
 </body>
 </html>
