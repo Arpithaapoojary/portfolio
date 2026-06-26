@@ -313,6 +313,30 @@
       .project-desc { font-size: 0.9rem; color: var(--soft); line-height: 1.78; flex: 1; }
       .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
 
+      /* PROJECT CTA BUTTONS */
+      .project-cta {
+        display: flex; gap: 0.65rem; flex-wrap: wrap; margin-top: 0.3rem;
+      }
+      .btn-demo {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        padding: 0.5rem 1.1rem;
+        background: linear-gradient(135deg, var(--accent), var(--accent2));
+        color: #fff; text-decoration: none; border-radius: 8px;
+        font-size: 0.78rem; font-weight: 600; letter-spacing: 0.03em;
+        transition: transform 0.2s, box-shadow 0.2s;
+        box-shadow: 0 3px 14px rgba(124,110,245,0.28);
+      }
+      .btn-demo:hover { transform: translateY(-2px); box-shadow: 0 6px 22px rgba(124,110,245,0.42); }
+      .btn-source {
+        display: inline-flex; align-items: center; gap: 0.4rem;
+        padding: 0.5rem 1.1rem;
+        border: 1px solid var(--border2);
+        color: var(--soft); text-decoration: none; border-radius: 8px;
+        font-size: 0.78rem; font-weight: 500; letter-spacing: 0.03em;
+        transition: border-color 0.2s, color 0.2s, transform 0.2s;
+      }
+      .btn-source:hover { border-color: var(--accent2); color: var(--accent2); transform: translateY(-2px); }
+
       /* RESEARCH PUBLICATION */
       #research { background: var(--bg3); }
       .research-card {
@@ -601,7 +625,7 @@
             <span class="stat-num">9.49</span><span class="stat-label">BCA CGPA</span>
           </div>
           <div class="stat-card reveal">
-            <span class="stat-num">3+</span><span class="stat-label">Projects Built</span>
+            <span class="stat-num">5+</span><span class="stat-label">Projects Built</span>
           </div>
           <div class="stat-card reveal">
             <span class="stat-num">2</span><span class="stat-label">Internships</span>
@@ -635,7 +659,7 @@
           </div>
           <div class="skill-cat">Frontend Development</div>
           <div class="tags">
-            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">React.js</span><span class="tag">Responsive Design</span>
+            <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">React.js</span><span class="tag">Responsive Design</span><span class="tag">Vite</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -646,7 +670,7 @@
           </div>
           <div class="skill-cat">Backend Development</div>
           <div class="tags">
-            <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST APIs</span>
+            <span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag">REST APIs</span><span class="tag">JWT Auth</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -670,7 +694,7 @@
           </div>
           <div class="skill-cat">Tools &amp; Platforms</div>
           <div class="tags">
-            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag t">WordPress</span><span class="tag t">cPanel</span>
+            <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">Postman</span><span class="tag t">WordPress</span><span class="tag t">cPanel</span><span class="tag">Vercel</span>
           </div>
         </div>
         <div class="skill-card reveal">
@@ -694,6 +718,7 @@
       <div class="s-line"></div>
       <div class="projects-grid">
 
+        <!-- PROJECT 01: BakeHub -->
         <div class="project-card reveal">
           <div class="project-header">
             <span class="project-num">01 &mdash; Nov 2025 &middot; Jan 2026</span>
@@ -718,6 +743,7 @@
           </div>
         </div>
 
+        <!-- PROJECT 02: SteganoGuard -->
         <div class="project-card reveal">
           <div class="project-header">
             <span class="project-num">02 &mdash; Jul 2025 &middot; Sep 2025</span>
@@ -742,6 +768,7 @@
           </div>
         </div>
 
+        <!-- PROJECT 03: IoT Health Monitor -->
         <div class="project-card reveal">
           <div class="project-header">
             <span class="project-num">03 &mdash; Jan 2024 &middot; Mar 2024</span>
@@ -758,6 +785,91 @@
             <span class="tag t">IoT Sensors</span><span class="tag t">Arduino</span><span class="tag t">Embedded C</span><span class="tag">Cloud IoT</span><span class="tag">Real-time Data</span>
           </div>
         </div>
+
+        <!-- PROJECT 04: BlogSpace (NEW) -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-num">04 &mdash; Full-Stack · Live</span>
+            <div class="project-links">
+              <a href="https://github.com/Arpithaapoojary/blogspace" target="_blank" title="Source Code">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://blogspace-sigma-flax.vercel.app/" target="_blank" title="Live Demo">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-title">BlogSpace</div>
+          <p class="project-desc">
+            A feature-rich MERN blogging platform with social networking capabilities. Supports JWT-based auth, markdown post editor, follow/follower feeds, likes, bookmarks, and comments. Includes a full Admin Dashboard with cascading delete controls and role-based access — deployed live on Vercel.
+          </p>
+          <div class="project-stack">
+            <span class="tag">MongoDB</span><span class="tag">Express.js</span><span class="tag">React.js</span><span class="tag">Node.js</span><span class="tag">JWT</span><span class="tag t">Markdown Editor</span><span class="tag t">Admin Dashboard</span>
+          </div>
+          <div class="project-cta">
+            <a href="https://blogspace-sigma-flax.vercel.app/" target="_blank" class="btn-demo">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="https://github.com/Arpithaapoojary/blogspace" target="_blank" class="btn-source">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Source Code
+            </a>
+          </div>
+        </div>
+
+        <!-- PROJECT 05: Snip URL Shortener (NEW) -->
+        <div class="project-card reveal">
+          <div class="project-header">
+            <span class="project-num">05 &mdash; Full-Stack · Live</span>
+            <div class="project-links">
+              <a href="https://github.com/Arpithaapoojary/url-shortener" target="_blank" title="Source Code">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+                </svg>
+              </a>
+              <a href="https://urlshortener-blond-xi.vercel.app/" target="_blank" title="Live Demo">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                  <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+                </svg>
+              </a>
+            </div>
+          </div>
+          <div class="project-title">Snip — URL Shortener</div>
+          <p class="project-desc">
+            A minimal full-stack URL shortener with real-time click analytics. Supports custom slugs for branded short links, full link history with copy/delete actions, and a click counter per link — all without a database. Built with React + Vite on the frontend and Node.js/Express with JSON file storage on the backend.
+          </p>
+          <div class="project-stack">
+            <span class="tag">React 18</span><span class="tag">Vite</span><span class="tag">Node.js</span><span class="tag">Express.js</span><span class="tag t">nanoid</span><span class="tag t">Click Analytics</span>
+          </div>
+          <div class="project-cta">
+            <a href="https://urlshortener-blond-xi.vercel.app/" target="_blank" class="btn-demo">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                <polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/>
+              </svg>
+              Live Demo
+            </a>
+            <a href="https://github.com/Arpithaapoojary/url-shortener" target="_blank" class="btn-source">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/>
+              </svg>
+              Source Code
+            </a>
+          </div>
+        </div>
+
       </div>
     </section>
 
