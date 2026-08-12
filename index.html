@@ -1,29 +1,38 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arpitha | Research & Full Stack</title>
+    <title>Arpitha | Software Engineer & Full-Stack Developer</title>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
     
     <style>
         :root {
-            /* Dark Theme Variables */
-            --bg-color: #0a0a0a;
-            --bg-card: #151515;
-            --bg-hover: rgba(255, 255, 255, 0.03);
-            --border: rgba(255, 255, 255, 0.1);
-            --border-hover: rgba(255, 255, 255, 0.2);
-            --text-main: #ededed;
-            --text-muted: #a1a1aa;
-            --text-dim: #71717a;
-            --accent: #ffffff;
+            /* Premium Light Mode Palette */
+            --bg-color: #ffffff;
+            --bg-alt: #f8fafc;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f1f5f9;
+            --border: #e2e8f0;
+            --border-hover: #cbd5e1;
             
-            --font-heading: 'Outfit', sans-serif;
+            --text-main: #0f172a;
+            --text-muted: #334155;
+            --text-dim: #64748b;
+            
+            --primary: #2563eb;
+            --primary-hover: #1d4ed8;
+            --primary-light: #eff6ff;
+            --accent-gradient: linear-gradient(135deg, #2563eb 0%, #4f46e5 100%);
+            
+            --font-heading: 'Plus Jakarta Sans', sans-serif;
             --font-body: 'Inter', sans-serif;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 20px -2px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 12px 30px -4px rgba(15, 23, 42, 0.1);
         }
 
         * {
@@ -40,25 +49,21 @@
             font-family: var(--font-body);
             background-color: var(--bg-color);
             color: var(--text-main);
-            font-size: 14px;
-            line-height: 1.6;
+            font-size: 15px;
+            line-height: 1.65;
             -webkit-font-smoothing: antialiased;
-            padding-bottom: 100px; /* Space for bottom nav */
+            overflow-x: hidden;
         }
 
         a {
             color: var(--text-main);
             text-decoration: none;
-            transition: color 0.2s;
-        }
-
-        a:hover {
-            color: var(--accent);
+            transition: all 0.2s ease;
         }
 
         /* Container */
         .container {
-            max-width: 700px;
+            max-width: 960px;
             margin: 0 auto;
             padding: 0 1.5rem;
         }
@@ -66,213 +71,217 @@
         /* Typography */
         h1, h2, h3, h4 {
             font-family: var(--font-heading);
-            color: var(--accent);
+            color: var(--text-main);
         }
 
-        .text-muted { color: var(--text-muted); }
-        .text-dim { color: var(--text-dim); }
+        .gradient-text {
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-        /* Floating Bottom Nav */
-        .bottom-nav {
-            position: fixed;
-            bottom: 2rem;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(20, 20, 20, 0.6);
+        /* Top Sticky Header Navbar */
+        header.top-nav {
+            position: sticky;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            border: 1px solid var(--border);
-            border-radius: 100px;
-            padding: 0.5rem;
-            display: flex;
-            gap: 0.5rem;
+            border-bottom: 1px solid var(--border);
             z-index: 1000;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            transition: all 0.3s ease;
         }
 
-        .nav-item {
-            padding: 0.5rem 1rem;
-            border-radius: 100px;
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-muted);
-            transition: all 0.2s;
+        .nav-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 70px;
         }
 
-        .nav-item:hover, .nav-item.active {
+        .brand-logo {
+            font-family: var(--font-heading);
+            font-weight: 800;
+            font-size: 1.25rem;
+            letter-spacing: -0.03em;
             color: var(--text-main);
-            background: rgba(255,255,255,0.05);
-        }
-
-        .nav-btn {
-            background: var(--text-main);
-            color: var(--bg-color);
-            padding: 0.5rem 1.25rem;
-            border-radius: 100px;
-            font-weight: 600;
-            font-size: 13px;
-        }
-        
-        .nav-btn:hover {
-            color: var(--bg-color);
-            transform: scale(1.05);
-        }
-
-        /* Header / Hero */
-        .hero {
-            padding: 6rem 0 4rem;
-        }
-
-        .hero-top {
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 2rem;
-            font-family: var(--font-heading);
-            letter-spacing: 0.5px;
         }
-        
-        .hero-top span {
-            display: inline-block;
-            width: 4px;
-            height: 4px;
-            background: var(--text-dim);
+
+        .brand-logo span {
+            width: 8px;
+            height: 8px;
+            background: var(--primary);
             border-radius: 50%;
+            display: inline-block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 1.75rem;
+            list-style: none;
+        }
+
+        .nav-link {
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--text-dim);
+            transition: color 0.2s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--primary);
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #ffffff !important;
+            padding: 0.55rem 1.25rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 13px;
+            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.25);
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+        }
+
+        .btn-secondary {
+            background: var(--bg-alt);
+            color: var(--text-main);
+            border: 1px solid var(--border);
+            padding: 0.55rem 1.25rem;
+            border-radius: 100px;
+            font-weight: 600;
+            font-size: 13px;
+            transition: all 0.25s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 5rem 0 4rem;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.35rem 0.85rem;
+            background: var(--primary-light);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+            border-radius: 100px;
+            font-size: 12px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 3.5rem);
+            font-size: clamp(2.5rem, 5vw, 3.75rem);
             font-weight: 800;
-            letter-spacing: -0.04em;
-            line-height: 1.1;
-            margin-bottom: 1rem;
+            letter-spacing: -0.03em;
+            line-height: 1.15;
+            margin-bottom: 1.25rem;
         }
 
         .hero-desc {
-            font-size: 15px;
+            font-size: 1.1rem;
             color: var(--text-muted);
             line-height: 1.7;
+            max-width: 750px;
             margin-bottom: 2rem;
-            max-width: 90%;
         }
 
-        /* Status Ticker Cards */
-        .status-cards {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1rem;
-            margin-bottom: 4rem;
-        }
-
-        .status-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1rem;
+        .hero-actions {
             display: flex;
             align-items: center;
             gap: 1rem;
+            flex-wrap: wrap;
         }
 
-        .status-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.05);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid var(--border);
-        }
-
-        .status-info {
-            display: flex;
-            flex-direction: column;
-        }
-
-        .status-label {
-            font-size: 11px;
-            color: var(--text-dim);
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            font-weight: 600;
-        }
-
-        .status-value {
-            font-size: 13px;
-            font-weight: 500;
-            color: var(--text-main);
-        }
-        
-        /* Section styling */
+        /* Section Styling */
         .section {
-            margin-bottom: 6rem;
+            padding: 4.5rem 0;
+            border-top: 1px solid var(--border);
         }
 
         .section-header {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            margin-bottom: 2rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .section-subtitle {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
         }
 
         .section-title {
-            font-size: 1.5rem;
-            font-weight: 700;
+            font-size: 2rem;
+            font-weight: 800;
             letter-spacing: -0.02em;
         }
 
         /* Grid Layouts */
         .grid-2 {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: repeat(2, 1fr);
             gap: 1.5rem;
         }
 
         /* Cards */
         .card {
-            background: transparent;
+            background: var(--bg-card);
             border: 1px solid var(--border);
             border-radius: 16px;
-            padding: 1.5rem;
-            transition: all 0.3s;
+            padding: 1.75rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .card:hover {
-            background: var(--bg-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .card-icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: var(--bg-card);
-            border: 1px solid var(--border);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-bottom: 1.25rem;
-            font-size: 1.25rem;
+            border-color: var(--primary);
+            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px);
         }
 
         .card-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            letter-spacing: -0.01em;
         }
 
         .card-desc {
-            font-size: 13px;
+            font-size: 14px;
             color: var(--text-muted);
             margin-bottom: 1.5rem;
-            line-height: 1.6;
-            flex-grow: 1;
+            line-height: 1.65;
         }
 
         /* Tech Chips */
@@ -280,147 +289,200 @@
             display: flex;
             flex-wrap: wrap;
             gap: 0.4rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1.25rem;
         }
 
         .chip {
             font-size: 11px;
-            padding: 0.25rem 0.6rem;
-            background: var(--bg-card);
+            font-weight: 600;
+            padding: 0.25rem 0.65rem;
+            background: var(--bg-alt);
             border: 1px solid var(--border);
-            border-radius: 100px;
+            border-radius: 6px;
             color: var(--text-dim);
-            font-family: var(--font-heading);
+            transition: all 0.2s ease;
+        }
+
+        .card:hover .chip {
+            border-color: rgba(37, 99, 235, 0.2);
+            color: var(--primary);
+            background: var(--primary-light);
         }
 
         /* Links */
         .card-links {
             display: flex;
+            align-items: center;
             gap: 1rem;
             font-size: 13px;
-            font-weight: 500;
+            font-weight: 600;
+            margin-top: auto;
         }
-        
+
         .card-links a {
-            display: flex;
+            color: var(--primary);
+            display: inline-flex;
             align-items: center;
-            gap: 0.25rem;
-        }
-        
-        .card-links a svg {
-            width: 14px;
-            height: 14px;
+            gap: 0.3rem;
         }
 
-        /* Timeline (Experience/Education) */
-        .timeline-item {
+        .card-links a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        /* Timeline Items */
+        .timeline {
             display: flex;
+            flex-direction: column;
             gap: 1.5rem;
-            padding-bottom: 2rem;
-            position: relative;
         }
 
-        .timeline-item:not(:last-child)::before {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            bottom: 0;
-            left: 23px;
-            width: 1px;
-            background: var(--border);
-        }
-
-        .timeline-logo {
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
+        .timeline-card {
             background: var(--bg-card);
             border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem 1.75rem;
+            box-shadow: var(--shadow-sm);
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+            transition: all 0.3s ease;
+        }
+
+        .timeline-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-md);
+            transform: translateY(-2px);
+        }
+
+        .timeline-icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: var(--primary-light);
+            color: var(--primary);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 700;
-            font-family: var(--font-heading);
-            font-size: 14px;
             flex-shrink: 0;
-            z-index: 1;
-        }
-
-        .timeline-content {
-            padding-top: 0.25rem;
         }
 
         .timeline-role {
-            font-size: 15px;
-            font-weight: 600;
-            color: var(--accent);
-            margin-bottom: 0.25rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: var(--text-main);
         }
 
         .timeline-company {
-            font-size: 13px;
-            color: var(--text-muted);
-            margin-bottom: 0.5rem;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 0.25rem;
         }
 
         .timeline-meta {
             font-size: 12px;
             color: var(--text-dim);
-            font-family: var(--font-heading);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
         }
 
-        /* Socials Grid */
-        .socials-grid {
+        /* Skills Layout */
+        .skills-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 1rem;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
         }
 
-        .social-card {
-            background: transparent;
+        .skill-box {
+            background: var(--bg-card);
             border: 1px solid var(--border);
-            border-radius: 12px;
-            padding: 1.25rem;
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.3s ease;
+        }
+
+        .skill-box:hover {
+            border-color: var(--primary);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        .skill-box-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        /* Complete Footer Layout */
+        footer.footer {
+            background: var(--bg-alt);
+            border-top: 1px solid var(--border);
+            padding: 4rem 0 2rem;
+            margin-top: 4rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-brand p {
+            font-size: 14px;
+            color: var(--text-dim);
+            margin-top: 0.75rem;
+            max-width: 320px;
+        }
+
+        .footer-heading {
+            font-size: 13px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            color: var(--text-main);
+            margin-bottom: 1.25rem;
+        }
+
+        .footer-links {
+            list-style: none;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            gap: 0.75rem;
-            transition: all 0.2s;
+            gap: 0.65rem;
         }
 
-        .social-card:hover {
-            background: var(--bg-hover);
-            border-color: var(--border-hover);
-            transform: translateY(-2px);
-        }
-
-        .social-card svg {
-            width: 24px;
-            height: 24px;
-            color: var(--text-main);
-        }
-
-        .social-card span {
-            font-size: 12px;
-            font-weight: 500;
-            font-family: var(--font-heading);
-        }
-
-        /* Footer */
-        .footer {
-            border-top: 1px dashed var(--border);
-            padding: 3rem 0;
-            margin-top: 4rem;
-            text-align: center;
-            font-size: 12px;
+        .footer-links a {
+            font-size: 14px;
             color: var(--text-dim);
         }
 
-        /* Animations & Dynamic Micro-Interactions */
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+
+        .footer-bottom {
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 13px;
+            color: var(--text-dim);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        /* Keyframe Animations */
         @keyframes fadeUp {
             from {
                 opacity: 0;
-                transform: translateY(24px);
+                transform: translateY(20px);
             }
             to {
                 opacity: 1;
@@ -428,230 +490,108 @@
             }
         }
 
-        @keyframes shimmerGradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        @keyframes pulseDot {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.4; transform: scale(0.85); }
-        }
-
         .hero, .section {
-            animation: fadeUp 0.8s ease-out forwards;
+            animation: fadeUp 0.7s ease-out forwards;
         }
 
-        .card, .social-card, .timeline-item {
-            transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .card:hover {
-            background: rgba(255, 255, 255, 0.035);
-            border-color: rgba(255, 255, 255, 0.22);
-            transform: translateY(-4px);
-            box-shadow: 0 12px 30px -10px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.02);
-        }
-
-        .chip {
-            transition: all 0.2s ease;
-        }
-
-        .chip:hover {
-            border-color: rgba(255, 255, 255, 0.35);
-            color: #ffffff;
-            background: rgba(255, 255, 255, 0.08);
-            transform: translateY(-1px);
-        }
-
-        .animated-border {
-            background-size: 200% 200% !important;
-            animation: shimmerGradient 6s ease infinite !important;
-        }
-
-        .bottom-nav {
-            transition: all 0.3s ease;
-        }
-
-        .bottom-nav:hover {
-            border-color: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.7), 0 0 15px rgba(255,255,255,0.05);
-        }
-
-        .nav-item:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Comprehensive Responsive Design & Mobile Media Queries */
-        @media (max-width: 768px) {
-            .container {
-                padding: 0 1rem;
+        /* Mobile Responsiveness */
+        @media (max-width: 868px) {
+            .nav-links {
+                display: none; /* Hide top links on small mobile, keep logo + CTA */
             }
-
-            .hero {
-                padding: 4rem 0 2.5rem;
+            
+            .grid-2, .skills-grid, .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
             }
 
             .hero h1 {
-                font-size: 2.25rem;
+                font-size: 2.5rem;
             }
 
-            .hero-desc {
-                font-size: 14px;
-                max-width: 100%;
-            }
-
-            .grid-2 {
-                grid-template-columns: 1fr;
-                gap: 1rem;
-            }
-
-            .socials-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 0.75rem;
-            }
-
-            .card {
-                padding: 1.25rem;
-            }
-
-            .timeline-item {
-                gap: 1rem;
-            }
-
-            .timeline-logo {
-                width: 40px;
-                height: 40px;
-                font-size: 12px;
-            }
-
-            .timeline-item:not(:last-child)::before {
-                left: 19px;
-            }
-
-            .section {
-                margin-bottom: 4rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            body {
-                overflow-x: hidden;
-                padding-bottom: 90px;
-            }
-
-            .bottom-nav {
-                width: 95vw;
-                max-width: 95vw;
-                bottom: 1rem;
-                padding: 0.35rem 0.4rem;
-                gap: 0.25rem;
-                overflow-x: auto;
-                white-space: nowrap;
-                -webkit-overflow-scrolling: touch;
-                scrollbar-width: none; /* Firefox */
-            }
-
-            .bottom-nav::-webkit-scrollbar {
-                display: none; /* Chrome/Safari */
-            }
-
-            .nav-item {
-                padding: 0.35rem 0.55rem;
-                font-size: 11px;
-                flex-shrink: 0;
-            }
-
-            .nav-btn {
-                padding: 0.35rem 0.8rem;
-                font-size: 11px;
-                flex-shrink: 0;
-            }
-
-            .socials-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .card-title {
-                font-size: 1rem;
-            }
-
-            .chip {
-                font-size: 10px;
-                padding: 0.2rem 0.5rem;
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- Floating Bottom Navigation -->
-    <nav class="bottom-nav">
-        <a href="#" class="nav-item">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
-        </a>
-        <a href="#research" class="nav-item">Research</a>
-        <a href="#projects" class="nav-item">Projects</a>
-        <a href="#achievements" class="nav-item">Achievements</a>
-        <a href="#skills" class="nav-item">Skills</a>
-        <a href="#experience" class="nav-item">Experience</a>
-        <a href="#education" class="nav-item">Education</a>
-        <a href="mailto:arpithaapoojary@gmail.com" class="nav-item nav-btn">Let's Talk</a>
-    </nav>
+    <!-- Top Sticky Header Navigation -->
+    <header class="top-nav">
+        <div class="container nav-content">
+            <a href="#" class="brand-logo">
+                Arpitha<span></span>
+            </a>
+            
+            <ul class="nav-links">
+                <li><a href="#research" class="nav-link">Research</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#achievements" class="nav-link">Achievements</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#experience" class="nav-link">Experience</a></li>
+                <li><a href="#education" class="nav-link">Education</a></li>
+            </ul>
+
+            <a href="mailto:arpithaapoojary@gmail.com" class="btn-primary">
+                Contact Me
+            </a>
+        </div>
+    </header>
 
     <div class="container">
         <!-- Hero Section -->
         <header class="hero">
-            <h1 style="margin-bottom: 0.5rem;">Arpitha</h1>
-            <div style="font-size: 13px; color: var(--text-dim); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1.5rem;">
-                Software Engineer &amp; Full-Stack Developer
+            <div class="hero-badge">
+                <span>⚡</span> Open to Entry-Level Software Engineer &amp; Full-Stack Roles
             </div>
-
+            
+            <h1>Software Engineer &amp; <span class="gradient-text">Full-Stack Developer</span></h1>
+            
             <p class="hero-desc">
-                Motivated Master of Computer Applications (MCA) graduate actively seeking entry-level Software Engineer &amp; Full-Stack Developer roles. Proficient in building responsive web applications using React, Node.js, Express, MongoDB, and Python, with practical experience in RESTful APIs, cloud integrations, and machine learning.
+                Master of Computer Applications (MCA) graduate skilled in building end-to-end web &amp; mobile software. Proficient with React, Node.js, Express, MongoDB, and Python with hands-on project experience in RESTful APIs, cloud platforms, and machine learning research.
             </p>
 
-            <div style="display: flex; gap: 0.75rem; margin-top: 1.5rem;">
-                <a href="https://www.linkedin.com/in/arpithapoojary/" target="_blank" style="font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.08); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.9rem; color: var(--text-main); display: inline-flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            <div class="hero-actions">
+                <a href="mailto:arpithaapoojary@gmail.com" class="btn-primary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Get in Touch
+                </a>
+                <a href="https://www.linkedin.com/in/arpithapoojary/" target="_blank" class="btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
                     LinkedIn
                 </a>
-                <a href="https://github.com/Arpithaapoojary" target="_blank" style="font-size: 12px; font-weight: 600; background: rgba(255,255,255,0.08); border: 1px solid var(--border); border-radius: 8px; padding: 0.45rem 0.9rem; color: var(--text-main); display: inline-flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                <a href="https://github.com/Arpithaapoojary" target="_blank" class="btn-secondary">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
                     GitHub
-                </a>
-                <a href="mailto:arpithaapoojary@gmail.com" style="font-size: 12px; font-weight: 600; background: var(--text-main); color: var(--bg-color); border-radius: 8px; padding: 0.45rem 0.9rem; display: inline-flex; align-items: center; gap: 0.4rem;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Contact Me
                 </a>
             </div>
         </header>
-        
+
         <!-- Research Section -->
         <section id="research" class="section">
             <div class="section-header">
-                <h2 class="section-title">Research</h2>
+                <div class="section-subtitle">Academic Publications</div>
+                <h2 class="section-title">Research Work</h2>
             </div>
-            <p class="text-muted" style="margin-bottom: 2rem;">Published and presented work at international conferences.</p>
 
-            <!-- Conference Paper Card -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #6366f1, #2dd4bf);"></div>
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.25rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--accent-gradient);"></div>
 
                 <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
                     <div>
-                        <div style="font-size: 11px; color: var(--text-dim); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.4rem;">Conference Paper &nbsp;&middot;&nbsp; IEEE Bangalore Section</div>
-                        <h3 style="font-size: 1.2rem; font-weight: 700; color: var(--text-main); font-family: var(--font-heading); letter-spacing: -0.02em; line-height: 1.3;">Hierarchical Deep Learning Framework for Skin Allergy and Infection Disease Classification Using MobileNetV2</h3>
+                        <div style="font-size: 12px; color: var(--primary); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem;">IEEE Bangalore Section &nbsp;&middot;&nbsp; Conference Paper</div>
+                        <h3 style="font-size: 1.35rem; font-weight: 800; color: var(--text-main); line-height: 1.35;">Hierarchical Deep Learning Framework for Skin Allergy and Infection Disease Classification Using MobileNetV2</h3>
                     </div>
-                    <div style="background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.3); border-radius: 8px; padding: 0.4rem 0.9rem; font-size: 11px; color: #818cf8; font-family: var(--font-heading); white-space: nowrap;">Published</div>
+                    <span style="background: var(--primary-light); border: 1px solid rgba(37, 99, 235, 0.2); border-radius: 100px; padding: 0.35rem 0.9rem; font-size: 12px; font-weight: 700; color: var(--primary); white-space: nowrap;">Published Paper</span>
                 </div>
 
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem;">
-                    Presented at the <strong style="color: var(--text-main);">2026 International Conference on Natural Language Processing and Computer Vision (ICNPCV)</strong> held at Global Academy of Technology (GAT), Bengaluru — July 17–18, 2026. Organized under the IEEE Bangalore Section.
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem;">
+                    Presented at the <strong style="color: var(--text-main);">2026 International Conference on Natural Language Processing and Computer Vision (ICNPCV)</strong> held at Global Academy of Technology (GAT), Bengaluru — July 17–18, 2026.
                 </p>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
-                    This paper proposes a hierarchical deep learning framework leveraging <strong style="color: var(--text-main);">MobileNetV2</strong> for the accurate multi-class classification of skin allergies and infection diseases from dermatological images. The framework is designed for real-world clinical applicability with a focus on lightweight inference.
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
+                    Authored a hierarchical deep learning model leveraging <strong style="color: var(--text-main);">MobileNetV2</strong> architecture to accurately diagnose and classify dermatological conditions from clinical images with lightweight computational overhead.
                 </p>
 
                 <div class="tech-chips">
@@ -669,158 +609,155 @@
         <!-- Projects Section -->
         <section id="projects" class="section">
             <div class="section-header">
-                <h2 class="section-title">Featured Projects</h2>
+                <div class="section-subtitle">Portfolio</div>
+                <h2 class="section-title">Featured Software Projects</h2>
             </div>
-            <p class="text-muted" style="margin-bottom: 2rem;">Things I built that I'd still sign my name on.</p>
 
             <div class="grid-2">
                 <!-- BlogSpace -->
                 <div class="card">
-                    <h3 class="card-title">BlogSpace</h3>
-                    <p class="card-desc">
-                        A full-featured MERN blogging platform. Users can register, write rich markdown posts, follow authors, and interact through likes &amp; comments. Includes a complete Admin Dashboard with user management, post moderation, and analytics. JWT-based authentication with protected routes.
-                    </p>
-                    <div class="tech-chips">
-                        <span class="chip">MongoDB</span>
-                        <span class="chip">Express.js</span>
-                        <span class="chip">React.js</span>
-                        <span class="chip">Node.js</span>
-                        <span class="chip">JWT Auth</span>
-                        <span class="chip">REST API</span>
+                    <div>
+                        <h3 class="card-title">BlogSpace Platform</h3>
+                        <p class="card-desc">
+                            Full-featured MERN blogging web application. Includes user registration, rich markdown publishing, author follow mechanics, likes/comments, and an Admin Dashboard with user moderation and content analytics. Built with secure JWT authentication.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip">MongoDB</span>
+                            <span class="chip">Express.js</span>
+                            <span class="chip">React.js</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">JWT Auth</span>
+                            <span class="chip">REST API</span>
+                        </div>
                     </div>
                     <div class="card-links">
                         <a href="https://github.com/Arpithaapoojary/blogspace" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            GitHub Repository &rarr;
                         </a>
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: 11px; color: var(--text-dim); font-family: var(--font-heading);">Jun 2026</div>
                 </div>
 
                 <!-- snip URL Shortener -->
                 <div class="card">
-                    <h3 class="card-title">snip — URL Shortener</h3>
-                    <p class="card-desc">
-                        A clean, minimal full-stack URL shortener with built-in analytics. Transforms long URLs into short links with custom slugs. Tracks real-time click counts, visit history, and referral sources per link. Responsive dashboard built with React 18 + Vite for a blazing-fast experience.
-                    </p>
-                    <div class="tech-chips">
-                        <span class="chip">React 18</span>
-                        <span class="chip">Vite</span>
-                        <span class="chip">Node.js</span>
-                        <span class="chip">Express.js</span>
-                        <span class="chip">MongoDB</span>
-                        <span class="chip">Click Analytics</span>
+                    <div>
+                        <h3 class="card-title">snip — URL Shortener</h3>
+                        <p class="card-desc">
+                            Minimal full-stack URL shortener with analytics engine. Converts long URLs into clean custom short links and tracks real-time click counts, referral sources, and visit timestamps. Frontend powered by React 18 + Vite for high performance.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip">React 18</span>
+                            <span class="chip">Vite</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">Express.js</span>
+                            <span class="chip">MongoDB</span>
+                            <span class="chip">Analytics</span>
+                        </div>
                     </div>
                     <div class="card-links">
                         <a href="https://urlshortener-blond-xi.vercel.app/" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-                            Live Demo
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                            Live App
                         </a>
-                        <a href="https://github.com/Arpithaapoojary/url-shortener" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            GitHub
+                        <a href="https://github.com/Arpithaapoojary/url-shortener" target="_blank" style="margin-left: 0.5rem;">
+                            GitHub &rarr;
                         </a>
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: 11px; color: var(--text-dim); font-family: var(--font-heading);">May 2026 · Vercel Deployed</div>
                 </div>
 
                 <!-- BakeHub -->
                 <div class="card">
-                    <h3 class="card-title">BakeHub</h3>
-                    <p class="card-desc">
-                        A full-stack bakery management and online ordering platform. Built for a real-world use case with product listing by category, user authentication, a persistent cart system, and seamless order placement. Integrated RESTful APIs with MongoDB for complete end-to-end data management. Fully responsive React UI.
-                    </p>
-                    <div class="tech-chips">
-                        <span class="chip">MongoDB</span>
-                        <span class="chip">Express.js</span>
-                        <span class="chip">React.js</span>
-                        <span class="chip">Node.js</span>
-                        <span class="chip">REST API</span>
-                        <span class="chip">Cart System</span>
+                    <div>
+                        <h3 class="card-title">BakeHub E-Commerce</h3>
+                        <p class="card-desc">
+                            Full-stack bakery management and online ordering web portal. Features dynamic product cataloging by category, user accounts, persistent shopping cart, and order processing workflows connected to MongoDB backend.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip">MongoDB</span>
+                            <span class="chip">Express.js</span>
+                            <span class="chip">React.js</span>
+                            <span class="chip">Node.js</span>
+                            <span class="chip">Cart Engine</span>
+                        </div>
                     </div>
                     <div class="card-links">
                         <a href="https://github.com/Arpithaapoojary/bakehub" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            GitHub Repository &rarr;
                         </a>
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: 11px; color: var(--text-dim); font-family: var(--font-heading);">Nov 2025 — Jan 2026 · Internship Project @ Accelerlab</div>
                 </div>
 
                 <!-- SteganoGuard -->
                 <div class="card">
-                    <h3 class="card-title">SteganoGuard</h3>
-                    <p class="card-desc">
-                        A cybersecurity application combining steganography + cryptography for secure covert communication. Hides encrypted secret messages inside standard image files. Additional toolkit: IP &amp; DNS lookup, URL encoder/decoder, email validation, and web-based security utilities for enhanced operational security.
-                    </p>
-                    <div class="tech-chips">
-                        <span class="chip">Python</span>
-                        <span class="chip">Cryptography</span>
-                        <span class="chip">Steganography</span>
-                        <span class="chip">DNS/IP Tools</span>
-                        <span class="chip">InfoSec</span>
+                    <div>
+                        <h3 class="card-title">SteganoGuard Tool</h3>
+                        <p class="card-desc">
+                            Cybersecurity suite combining image steganography and payload encryption. Conceals secret data payloads inside digital media files alongside InfoSec utilities like IP/DNS resolution, URL encoding, and email validators.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip">Python</span>
+                            <span class="chip">Cryptography</span>
+                            <span class="chip">Steganography</span>
+                            <span class="chip">InfoSec</span>
+                        </div>
                     </div>
                     <div class="card-links">
                         <a href="https://github.com/Arpithaapoojary/steganoguard" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            GitHub Repository &rarr;
                         </a>
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: 11px; color: var(--text-dim); font-family: var(--font-heading);">Jul 2025 — Sep 2025 · MCA Project</div>
                 </div>
 
                 <!-- IoT Health Monitor -->
                 <div class="card">
-                    <h3 class="card-title">IoT Health Monitor</h3>
-                    <p class="card-desc">
-                        A wearable health monitoring device that tracks real-time body movements and heart rate using embedded IoT sensors. Sensor data is streamed to the cloud for continuous remote monitoring, enabling early detection of abnormal physiological conditions.
-                    </p>
-                    <div class="tech-chips">
-                        <span class="chip">IoT Sensors</span>
-                        <span class="chip">Arduino</span>
-                        <span class="chip">Embedded C</span>
-                        <span class="chip">Cloud IoT</span>
-                        <span class="chip">Healthcare</span>
+                    <div>
+                        <h3 class="card-title">IoT Health Monitor</h3>
+                        <p class="card-desc">
+                            Wearable biomedical sensor system tracking physiological metrics (heart rate, motion) in real time. Streams biometric sensor data to cloud services for early anomaly detection in remote patient care.
+                        </p>
+                        <div class="tech-chips">
+                            <span class="chip">IoT Sensors</span>
+                            <span class="chip">Arduino</span>
+                            <span class="chip">Embedded C</span>
+                            <span class="chip">Cloud IoT</span>
+                        </div>
                     </div>
                     <div class="card-links">
                         <a href="https://github.com/Arpithaapoojary/iot-health-monitor" target="_blank">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                            GitHub
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
+                            GitHub Repository &rarr;
                         </a>
                     </div>
-                    <div style="margin-top: 0.75rem; font-size: 11px; color: var(--text-dim); font-family: var(--font-heading);">Jan 2024 — Mar 2024 · BCA Project</div>
                 </div>
-
             </div>
         </section>
 
         <!-- Achievements Section -->
         <section id="achievements" class="section">
             <div class="section-header">
-                <h2 class="section-title">Achievements</h2>
+                <div class="section-subtitle">Grants &amp; Grants</div>
+                <h2 class="section-title">Achievements &amp; Honors</h2>
             </div>
-            <p class="text-muted" style="margin-bottom: 2rem;">Recognition, grants, and milestones that matter.</p>
 
-            <!-- VedArogya Achievement Banner -->
-            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; margin-bottom: 1.5rem; position: relative; overflow: hidden;">
-                <div style="position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, #f59e0b, #fbbf24, #f59e0b);"></div>
-                <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.5rem;">
+            <!-- VedArogya Banner -->
+            <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 20px; padding: 2.25rem; box-shadow: var(--shadow-md); position: relative; overflow: hidden;">
+                <div style="position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #f59e0b, #d97706);"></div>
+                
+                <div style="display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1.25rem;">
                     <div>
-                        <div style="font-size: 11px; color: #f59e0b; font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem;">Selected &amp; Sanctioned — KSCST 49th SPP Series · Apr 2026</div>
-                        <h3 style="font-size: 1.4rem; font-weight: 700; color: var(--text-main); font-family: var(--font-heading); letter-spacing: -0.02em; line-height: 1.3;">VedArogya</h3>
-                        <p style="font-size: 0.95rem; color: var(--text-muted); margin-top: 0.25rem;">AI-Powered Ayurvedic Health Monitoring &amp; Predictive Care System</p>
+                        <div style="font-size: 12px; color: #d97706; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-bottom: 0.4rem;">Selected &amp; Sanctioned — KSCST 49th SPP Series · Apr 2026</div>
+                        <h3 style="font-size: 1.4rem; font-weight: 800; color: var(--text-main);">VedArogya — AI-Powered Ayurvedic Health Platform</h3>
                     </div>
-                    <div style="background: rgba(245, 158, 11, 0.1); border: 1px solid rgba(245, 158, 11, 0.3); border-radius: 8px; padding: 0.5rem 1rem; font-size: 12px; color: #f59e0b; font-family: var(--font-heading); white-space: nowrap;">Government Funded</div>
+                    <span style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 100px; padding: 0.35rem 0.9rem; font-size: 12px; font-weight: 700; color: #d97706; white-space: nowrap;">Government Funded Project</span>
                 </div>
 
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
-                    VedArogya bridges classical Ayurvedic wisdom with modern digital health technology through a mobile application. It integrates <strong style="color: var(--text-main);">Prakriti-based dosha assessment</strong> (Vata, Pitta, Kapha), real-time biometric data from wearables, and machine learning models to deliver personalized preventive healthcare rooted in Ayurvedic principles.
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.25rem;">
+                    Project selected and funded by the <strong style="color: var(--text-main);">Karnataka State Council for Science and Technology (KSCST)</strong> under the 49th Student Project Programme.
                 </p>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
-                    The platform is built on <strong style="color: var(--text-main);">React Native (Expo)</strong> frontend, <strong style="color: var(--text-main);">NestJS</strong> backend, <strong style="color: var(--text-main);">FastAPI</strong>-based ML inference service, and a <strong style="color: var(--text-main);">RAG knowledge pipeline</strong> trained on classical Ayurvedic texts including the Charaka Samhita, Ashtanga Hridayam, and Sushruta Samhita. A proprietary <strong style="color: var(--text-main);">Agni Score</strong> replaces conventional calorie-based metrics to quantify digestive health.
-                </p>
-                <p style="font-size: 13px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
-                    Key features: Prakriti/Vikruti profiling, daily Dinacharya tracking, Ritucharya-based seasonal recommendations, dosha-biometric fusion analysis, and an <strong style="color: var(--text-main);">AI Vaidya chatbot</strong>. Supports wearable integration via <strong style="color: var(--text-main);">Google Health Connect</strong> and <strong style="color: var(--text-main);">Apple HealthKit</strong>. Secured under ABDM/ABHA integration, DPDP Act 2023 compliance, and DISHA alignment. Clinically validated in partnership with <strong style="color: var(--text-main);">Kakunje Wellness Ayurvedha Clinic, Moodbidri</strong>.
+                <p style="font-size: 14px; color: var(--text-muted); line-height: 1.75; margin-bottom: 1.5rem;">
+                    Built with <strong style="color: var(--text-main);">React Native (Expo)</strong>, <strong style="color: var(--text-main);">NestJS</strong>, <strong style="color: var(--text-main);">FastAPI</strong>, and a Retrieval-Augmented Generation (<strong style="color: var(--text-main);">RAG</strong>) knowledge engine trained on classical Ayurvedic Samhitas. Features wearable biometric syncing via Google Health Connect &amp; Apple HealthKit.
                 </p>
 
                 <div class="tech-chips">
@@ -831,21 +768,21 @@
                     <span class="chip">Machine Learning</span>
                     <span class="chip">Google Health Connect</span>
                     <span class="chip">Apple HealthKit</span>
-                    <span class="chip">Ayurveda AI</span>
-                    <span class="chip">ABDM/ABHA</span>
                     <span class="chip">KSCST Funded</span>
                 </div>
             </div>
-        <!-- Skills Section -->
+        </section>
+
+        <!-- Technical Skills Section -->
         <section id="skills" class="section">
             <div class="section-header">
+                <div class="section-subtitle">Competencies</div>
                 <h2 class="section-title">Technical Skills</h2>
             </div>
-            <p class="text-muted" style="margin-bottom: 2rem;">Technologies, frameworks, and tools I work with.</p>
 
-            <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.5rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 600; color: var(--text-main); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">Languages</h3>
+            <div class="skills-grid">
+                <div class="skill-box">
+                    <div class="skill-box-title">Languages</div>
                     <div class="tech-chips" style="margin-bottom: 0;">
                         <span class="chip">Python</span>
                         <span class="chip">JavaScript (ES6+)</span>
@@ -855,8 +792,8 @@
                     </div>
                 </div>
 
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.5rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 600; color: var(--text-main); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">Frameworks &amp; Web/Mobile</h3>
+                <div class="skill-box">
+                    <div class="skill-box-title">Frameworks &amp; Web/Mobile</div>
                     <div class="tech-chips" style="margin-bottom: 0;">
                         <span class="chip">React.js</span>
                         <span class="chip">React Native (Expo)</span>
@@ -868,20 +805,20 @@
                     </div>
                 </div>
 
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.5rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 600; color: var(--text-main); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">AI, ML &amp; Cybersecurity</h3>
+                <div class="skill-box">
+                    <div class="skill-box-title">AI, ML &amp; Security</div>
                     <div class="tech-chips" style="margin-bottom: 0;">
                         <span class="chip">Deep Learning (MobileNetV2)</span>
                         <span class="chip">Computer Vision</span>
                         <span class="chip">RAG Pipelines</span>
                         <span class="chip">Cryptography</span>
                         <span class="chip">Steganography</span>
-                        <span class="chip">InfoSec Tools</span>
+                        <span class="chip">InfoSec</span>
                     </div>
                 </div>
 
-                <div style="background: var(--bg-card); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.5rem;">
-                    <h3 style="font-size: 0.9rem; font-weight: 600; color: var(--text-main); font-family: var(--font-heading); text-transform: uppercase; letter-spacing: 0.8px; margin-bottom: 0.8rem;">Databases, Cloud &amp; Tools</h3>
+                <div class="skill-box">
+                    <div class="skill-box-title">Databases &amp; Developer Tools</div>
                     <div class="tech-chips" style="margin-bottom: 0;">
                         <span class="chip">MongoDB</span>
                         <span class="chip">REST APIs</span>
@@ -897,30 +834,37 @@
         <!-- Experience Section -->
         <section id="experience" class="section">
             <div class="section-header">
-                <h2 class="section-title">Experience</h2>
+                <div class="section-subtitle">Work History</div>
+                <h2 class="section-title">Professional Experience</h2>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-logo" title="Accelerlab Solutions">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+            <div class="timeline">
+                <div class="timeline-card">
+                    <div class="timeline-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div>
+                        <div class="timeline-role">Full-Stack Developer Intern</div>
+                        <div class="timeline-company">Accelerlab Solutions Pvt Ltd</div>
+                        <div class="timeline-meta">Oct 2025 — Jan 2026</div>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.65;">
+                            Developed full-stack web platforms using MERN stack (MongoDB, Express, React, Node.js). Designed database schemas, built authenticated RESTful APIs, and maintained code repositories with Git/GitHub.
+                        </p>
+                    </div>
                 </div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Full-Stack Developer Intern</div>
-                    <div class="timeline-company">Accelerlab Solutions Pvt Ltd</div>
-                    <div class="timeline-meta">Oct 2025 — Jan 2026</div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">Built full-stack MERN applications, designed MongoDB schemas, developed RESTful APIs with Node.js &amp; Express, and collaborated via Git/GitHub.</p>
-                </div>
-            </div>
 
-            <div class="timeline-item" style="padding-bottom: 0;">
-                <div class="timeline-logo" title="Cloud Tusker">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
-                </div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Web Development Intern</div>
-                    <div class="timeline-company">Cloud Tusker Web Hosting Solutions</div>
-                    <div class="timeline-meta">Jan 2024 — Feb 2024</div>
-                    <p style="font-size: 13px; color: var(--text-muted); margin-top: 0.5rem; line-height: 1.6;">Developed and customized WordPress websites, managed hosting via cPanel, and administered Linux server environments.</p>
+                <div class="timeline-card">
+                    <div class="timeline-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+                    </div>
+                    <div>
+                        <div class="timeline-role">Web Development Intern</div>
+                        <div class="timeline-company">Cloud Tusker Web Hosting Solutions</div>
+                        <div class="timeline-meta">Jan 2024 — Feb 2024</div>
+                        <p style="font-size: 14px; color: var(--text-muted); line-height: 1.65;">
+                            Configured custom WordPress websites, managed cPanel web hosting server environments, and performed Linux server configuration tasks.
+                        </p>
+                    </div>
                 </div>
             </div>
         </section>
@@ -928,59 +872,76 @@
         <!-- Education Section -->
         <section id="education" class="section">
             <div class="section-header">
+                <div class="section-subtitle">Academic Credentials</div>
                 <h2 class="section-title">Education</h2>
             </div>
 
-            <div class="timeline-item">
-                <div class="timeline-logo" title="MITE">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+            <div class="timeline">
+                <div class="timeline-card">
+                    <div class="timeline-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                        <div class="timeline-role">Master of Computer Applications (MCA)</div>
+                        <div class="timeline-company">Mangalore Institute of Technology &amp; Engineering (MITE), Moodbidri</div>
+                        <div class="timeline-meta">2024 — 2026 &nbsp;&middot;&nbsp; <strong style="color: var(--primary);">CGPA: 9.0</strong></div>
+                    </div>
                 </div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Master of Computer Applications (MCA)</div>
-                    <div class="timeline-company">Mangalore Institute of Technology &amp; Engineering, Moodbidri</div>
-                    <div class="timeline-meta">2024 — 2026 &nbsp;&middot;&nbsp; CGPA: 9.0</div>
-                </div>
-            </div>
 
-            <div class="timeline-item">
-                <div class="timeline-logo" title="Alva's">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                <div class="timeline-card">
+                    <div class="timeline-icon-box">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+                    </div>
+                    <div>
+                        <div class="timeline-role">Bachelor of Computer Applications (BCA)</div>
+                        <div class="timeline-company">Alva's Education Foundation, Moodabidri</div>
+                        <div class="timeline-meta">2021 — 2024 &nbsp;&middot;&nbsp; <strong style="color: var(--primary);">CGPA: 9.49</strong></div>
+                    </div>
                 </div>
-                <div class="timeline-content">
-                    <div class="timeline-role">Bachelor of Computer Applications (BCA)</div>
-                    <div class="timeline-company">Alva's Education Foundation, Moodabidri</div>
-                    <div class="timeline-meta">2021 — 2024 &nbsp;&middot;&nbsp; CGPA: 9.49</div>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Social Grid -->
-        <section class="section">
-            <div class="section-header">
-                <h2 class="section-title">Find me online</h2>
-            </div>
-            
-            <div class="socials-grid">
-                <a href="https://www.linkedin.com/in/arpithapoojary/" target="_blank" class="social-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                    <span>LinkedIn</span>
-                </a>
-                <a href="https://github.com/Arpithaapoojary" target="_blank" class="social-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 22v-4a4.8 4.8 0 0 0-1-3.5c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"/><path d="M9 18c-4.51 2-5-2-7-2"/></svg>
-                    <span>GitHub</span>
-                </a>
-                <a href="mailto:arpithaapoojary@gmail.com" class="social-card">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    <span>Email</span>
-                </a>
             </div>
         </section>
-
-        <!-- Footer -->
-        <footer class="footer">
-            &copy; 2026 Arpitha &middot; All rights reserved.
-        </footer>
     </div>
+
+    <!-- Complete Multi-Column Footer Layout -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="brand-logo">
+                        Arpitha<span></span>
+                    </a>
+                    <p>
+                        Software Engineer &amp; Full-Stack Developer specializing in modern web applications, cloud backends, and applied AI research.
+                    </p>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Navigation</div>
+                    <ul class="footer-links">
+                        <li><a href="#research">Research</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#achievements">Achievements</a></li>
+                        <li><a href="#skills">Skills</a></li>
+                        <li><a href="#experience">Experience</a></li>
+                        <li><a href="#education">Education</a></li>
+                    </ul>
+                </div>
+
+                <div>
+                    <div class="footer-heading">Connect</div>
+                    <ul class="footer-links">
+                        <li><a href="https://www.linkedin.com/in/arpithapoojary/" target="_blank">LinkedIn</a></li>
+                        <li><a href="https://github.com/Arpithaapoojary" target="_blank">GitHub</a></li>
+                        <li><a href="mailto:arpithaapoojary@gmail.com">Email Me</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div>&copy; 2026 Arpitha &middot; All rights reserved.</div>
+                <div>Designed for Entry-Level Software Engineering Opportunities</div>
+            </div>
+        </div>
+    </footer>
 </body>
 </html>
